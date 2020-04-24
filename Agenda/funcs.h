@@ -1,0 +1,4 @@
+
+
+int teste(int x);
+
