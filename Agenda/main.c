@@ -5,7 +5,7 @@ int main(){
 
 
     int x = 0;
-   char opcao;
+   char opcao[20];
   
 
    
@@ -19,16 +19,17 @@ int main(){
         printf(" 'C' - Consultar os trabalhos na agenda\n");
         printf(" 'E' - Exibir os trabalhos da agenda por data\n");
         printf(" 'F' - Sair\n");
-        scanf("%c", &opcao);
+        scanf("%str", opcao);
      
-            if(opcao == 'i') opcao='I';
-             else if (opcao == 'r') opcao='R';
-              else if (opcao == 'c') opcao='C';
-               else if (opcao == 'e') opcao='E';
-                else if (opcao == 'f') opcao='F';
+            if(opcao[1] != '\0' ) opcao[0]='V';
+            else if(opcao[0] == 'i') opcao[0]='I';
+             else if (opcao[0] == 'r') opcao[0]='R';
+              else if (opcao[0] == 'c') opcao[0]='C';
+               else if (opcao[0] == 'e') opcao[0]='E';
+                else if (opcao[0] == 'f') opcao[0]='F';
                 
                  getchar();  
-        switch (opcao)
+        switch (opcao[0])
         
         
         {
@@ -40,15 +41,15 @@ int main(){
 
         case 'R':
          printf("TESTE R");
-         fflush(stdin);
+       
             break;
         case 'C':
         printf("TESTE C");
-        fflush(stdin);
+     
             break;
         case 'E':
           printf("TESTE E");
-          fflush(stdin);
+        
             break;
        
         case 'F':
@@ -56,8 +57,10 @@ int main(){
             exit(0);
             break;
         default:
-            printf("ATENCAO - Opcao invalida!Digite: \n");
-             fflush(stdin);
+        system("@cls||clear");
+            printf("ATENCAO - Opcao invalida! \n");
+            printf("Digite <enter> para voltar");
+            getchar();
              break;     }
     } while (x == 0);
 }
