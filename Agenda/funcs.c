@@ -2,17 +2,10 @@
 #include "funcs.h"
 #define DIM 30
 
-
-
-
-
-
 void inicalizarLLS(LISTA *LLS)
 {
-    LLS->nmrElem = 0;            //Função serve para inicializar a lista, zero elementos validos, está recebendo o endereço da lista para que as modificações sejam realizadas no campo certo, caso contrario seria modifica a copia da estrutura
+    LLS->nmrElem = 0; //Função serve para inicializar a lista, zero elementos validos, está recebendo o endereço da lista para que as modificações sejam realizadas no campo certo, caso contrario seria modifica a copia da estrutura
 }
-
-
 
 int inserirElemPosicaoLLS_Ord(LISTA *LLS, REGISTRO valor)
 {
@@ -33,13 +26,16 @@ int inserirElemPosicaoLLS_Ord(LISTA *LLS, REGISTRO valor)
 void mostraLLS(LISTA *LLS)
 {
     int i;
-    printf("LISTA: < ");
+    printf("TAREFAS:\n");
     for (i = 0; i < LLS->nmrElem; i++)
     {
-        printf("%i, ", LLS->A[i].busqData);
-    
+        printf("\nTrabalho %d\n\n", i + 1);
+        printf("Titulo:    %s", LLS->A[i].nometrab);
+        printf("Descricao: %s", LLS->A[i].desc);
+        printf("Codigo:    %i ", LLS->A[i].busqData);
+        printf("\n");
     }
     fflush(stdin); //fflush(stdin); //se for windows
-    printf(" >\n Digite <enter> para voltar");
+    printf("  Digite <enter> para voltar");
     getchar();
 }
