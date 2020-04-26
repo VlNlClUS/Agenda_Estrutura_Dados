@@ -50,6 +50,10 @@ int main()
             printf("Digite o Nome do Trabalho: ");
 
             fgets(valor.nometrab, 20, stdin);
+            printf("Digite a Disciplina do trabalho: ");
+
+            fgets(valor.dpn, 80, stdin);
+
             printf("Digite uma Descricao para o trabalho: ");
 
             fgets(valor.desc, 80, stdin);

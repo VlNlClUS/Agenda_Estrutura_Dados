@@ -14,7 +14,7 @@ int inserirElemPosicaoLLS_Ord(LISTA *LLS, REGISTRO valor)
 
     int i, pos;
 
-    for (pos = LLS->nmrElem; (pos > 0) && (LLS->A[pos - 1].teste > valor.busqData); pos--)
+    for (pos = LLS->nmrElem; (pos > 0) && (LLS->A[pos - 1].busqData > valor.busqData); pos--)
     {
         LLS->A[pos] = LLS->A[pos - 1];
     }
@@ -30,9 +30,10 @@ void mostraLLS(LISTA *LLS)
     for (i = 0; i < LLS->nmrElem; i++)
     {
         printf("\nTrabalho %d\n\n", i + 1);
-        printf("Titulo:    %s", LLS->A[i].nometrab);
-        printf("Descricao: %s", LLS->A[i].desc);
-        printf("Codigo:    %i ", LLS->A[i].busqData);
+        printf("Titulo:     %s", LLS->A[i].nometrab);
+        printf("Disciplina: %s", LLS->A[i].dpn);
+        printf("Descricao:  %s", LLS->A[i].desc);
+        printf("Data:       %i/%i/%i ", LLS->A[i].dd,LLS->A[i].mm,LLS->A[i].ano);
         printf("\n");
     }
     fflush(stdin); //fflush(stdin); //se for windows
