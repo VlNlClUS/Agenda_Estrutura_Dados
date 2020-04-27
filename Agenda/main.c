@@ -7,7 +7,7 @@
 int main()
 {
 
-    int x = 0, TEMP, tmpD, tmpM, tmpA,TEMP2;
+    int x = 0, TEMP, tmpD, tmpM, tmpA, TEMP2;
     char opcao[20];
     char teste[10] = {"Pendente"};
     LISTA LLS;
@@ -69,7 +69,7 @@ int main()
                 {
                     printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
                     getchar();
-                  
+                    getchar();
                 }
             } while (valor.dd <= 0 || valor.dd > 31);
             do
@@ -80,7 +80,7 @@ int main()
                 {
                     printf("Favor insira um numero de 1 a 12\n");
                     getchar();
-                  
+                    getchar();
                     system("@cls||clear");
                 }
             } while (valor.mm <= 0 || valor.mm > 12);
@@ -101,7 +101,7 @@ int main()
             valor.cddata = (valor.ano * 10000) + (valor.mm * 100) + valor.dd;
             fflush(stdin);
             getchar();
-            
+
             TEMP = inserirElemPosicaoLLS_Ord(&LLS, valor);
             if (TEMP == 0)
             {
@@ -132,79 +132,83 @@ int main()
             else if (opcao[0] == 'd')
                 opcao[0] = 'D';
 
-                            switch (opcao[0])
+            switch (opcao[0])
 
+            {
+
+            case 'A':
+                system("@cls||clear");
+                buscaLinear(&LLS);
+                break;
+
+            case 'D':
+                system("@cls||clear");
+                do
+                {
+                    system("@cls||clear");
+                    printf("Digite a Data Corespondente as tarefas que deseja excluir:\n");
+                    printf("Dia: ");
+                    scanf("%d", &tmpD);
+                    if (tmpD <= 0 || tmpD > 31)
                     {
-
-                    case 'A':
-                        system("@cls||clear");
-                        buscaLinear(&LLS);
-                        break;
-
-                    case 'D':
-                        system("@cls||clear");
-                        do
-                    {
-                        system("@cls||clear");
-                        printf("Digite a Data Corespondente as tarefas que deseja excluir:\n");
-                        printf("Dia: ");
-                        scanf("%d", &tmpD);
-                        if (tmpD <= 0 || tmpD > 31)
-                        {
-                            printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
-                            getchar();
-                            getchar();
-                        }
-                    } while (tmpD <= 0 || tmpD > 31);
-                    do
-                    {
-                        printf("Mes: ");
-                        scanf("%d", &tmpM);
-                        if (tmpM <= 0 || tmpM > 12)
-                        {
-                            printf("Favor insira um numero de 1 a 12\n");
-                            getchar();
-                            getchar();
-                            system("@cls||clear");
-                        }
-                    } while (tmpM <= 0 || tmpM > 12);
-
-                    do
-                    {
-                        printf("Ano: ");
-                        scanf("%d", &tmpA);
-                        if (tmpA < 2019 || tmpA > 2099)
-                        {
-                            printf("Favor insira um numero entre 2019 e 2099\n");
-                            getchar();
-                            getchar();
-                            system("@cls||clear");
-                        }
-                    } while (tmpA < 2019 || tmpA > 2099);
-
-                    TEMP = (tmpA * 10000) + (tmpM * 100) + tmpD;
-                    
-                   
-        TEMP2=excluirElemLLS(TEMP,&LLS);
-     
-        if(TEMP2 == 0){
-system("@cls||clear");
-            printf("A Operacao falhou por algum motivo inesperado\n");
-        }else {
-            system("@cls||clear");
-            printf("SUCESSO\n");}
-
-        getchar();
-        getchar();             break;
-
-                    default:
-                        system("@cls||clear");
-                        printf("ATENCAO - Opcao invalida! \n");
-                        printf("Digite <enter> para voltar");
+                        printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
                         getchar();
                         getchar();
-                        break;
                     }
+                } while (tmpD <= 0 || tmpD > 31);
+                do
+                {
+                    printf("Mes: ");
+                    scanf("%d", &tmpM);
+                    if (tmpM <= 0 || tmpM > 12)
+                    {
+                        printf("Favor insira um numero de 1 a 12\n");
+                        getchar();
+                        getchar();
+                        system("@cls||clear");
+                    }
+                } while (tmpM <= 0 || tmpM > 12);
+
+                do
+                {
+                    printf("Ano: ");
+                    scanf("%d", &tmpA);
+                    if (tmpA < 2019 || tmpA > 2099)
+                    {
+                        printf("Favor insira um numero entre 2019 e 2099\n");
+                        getchar();
+                        getchar();
+                        system("@cls||clear");
+                    }
+                } while (tmpA < 2019 || tmpA > 2099);
+
+                TEMP = (tmpA * 10000) + (tmpM * 100) + tmpD;
+
+                TEMP2 = excluirElemLLS(TEMP, &LLS);
+
+                if (TEMP2 == 0)
+                {
+                    system("@cls||clear");
+                    printf("A Operacao falhou por algum motivo inesperado\n");
+                }
+                else
+                {
+                    system("@cls||clear");
+                    printf("SUCESSO\n");
+                }
+
+                getchar();
+                getchar();
+                break;
+
+            default:
+                system("@cls||clear");
+                printf("ATENCAO - Opcao invalida! \n");
+                printf("Digite <enter> para voltar");
+                getchar();
+                getchar();
+                break;
+            }
 
             break;
         case 'C':
@@ -213,57 +217,58 @@ system("@cls||clear");
 
             break;
         case 'E':
-                     system("@cls||clear");
-                        do
-                    {
-                        system("@cls||clear");
-                        printf("Digite a Data Corespondente as tarefas que voce deseja:\n");
-                        printf("Dia: ");
-                        scanf("%d", &tmpD);
-                        if (tmpD <= 0 || tmpD > 31)
-                        {
-                            printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
-                            getchar();
-                            getchar();
-                        }
-                    } while (tmpD <= 0 || tmpD > 31);
-                    do
-                    {
-                        printf("Mes: ");
-                        scanf("%d", &tmpM);
-                        if (tmpM <= 0 || tmpM > 12)
-                        {
-                            printf("Favor insira um numero de 1 a 12\n");
-                            getchar();
-                            getchar();
-                            system("@cls||clear");
-                        }
-                    } while (tmpM <= 0 || tmpM > 12);
+            system("@cls||clear");
+            do
+            {
+                system("@cls||clear");
+                printf("Digite a Data Corespondente as tarefas que voce deseja:\n");
+                printf("Dia: ");
+                scanf("%d", &tmpD);
+                if (tmpD <= 0 || tmpD > 31)
+                {
+                    printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
+                    getchar();
+                    getchar();
+                }
+            } while (tmpD <= 0 || tmpD > 31);
+            do
+            {
+                printf("Mes: ");
+                scanf("%d", &tmpM);
+                if (tmpM <= 0 || tmpM > 12)
+                {
+                    printf("Favor insira um numero de 1 a 12\n");
+                    getchar();
+                    getchar();
+                    system("@cls||clear");
+                }
+            } while (tmpM <= 0 || tmpM > 12);
 
-                    do
-                    {
-                        printf("Ano: ");
-                        scanf("%d", &tmpA);
-                        if (tmpA < 2019 || tmpA > 2099)
-                        {
-                            printf("Favor insira um numero entre 2019 e 2099\n");
-                            getchar();
-                            getchar();
-                            system("@cls||clear");
-                        }
-                    } while (tmpA < 2019 || tmpA > 2099);
+            do
+            {
+                printf("Ano: ");
+                scanf("%d", &tmpA);
+                if (tmpA < 2019 || tmpA > 2099)
+                {
+                    printf("Favor insira um numero entre 2019 e 2099\n");
+                    getchar();
+                    getchar();
+                    system("@cls||clear");
+                }
+            } while (tmpA < 2019 || tmpA > 2099);
 
-                    TEMP = (tmpA * 10000) + (tmpM * 100) + tmpD;
-                    
-TEMP2=buscaElemDAt(TEMP,&LLS);
- if(TEMP2 == 0){
+            TEMP = (tmpA * 10000) + (tmpM * 100) + tmpD;
 
-    system("@cls||clear");
-            printf("A Operacao falhou por algum motivo inesperado\n");
-}
+            TEMP2 = buscaElemDAt(TEMP, &LLS);
+            if (TEMP2 == 0)
+            {
 
-getchar();
-getchar();
+                system("@cls||clear");
+                printf("A Operacao falhou por algum motivo inesperado\n");
+            }
+
+            getchar();
+            getchar();
             break;
 
         case 'F':
@@ -275,6 +280,7 @@ getchar();
             system("@cls||clear");
             printf("ATENCAO - Opcao invalida! \n");
             printf("Digite <enter> para voltar");
+            getchar();
             getchar();
             break;
         }

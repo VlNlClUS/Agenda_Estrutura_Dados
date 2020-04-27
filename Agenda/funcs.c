@@ -16,7 +16,8 @@ int inserirElemPosicaoLLS_Ord(LISTA *LLS, REGISTRO valor)
     int i, pos;
 
     valor.codigo = LLS->nmrElemMAX;
-    for (pos = LLS->nmrElem; (pos > 0) && (LLS->A[pos - 1].cddata > valor.cddata); pos--)
+    for (pos = LLS->nmrElem; (pos > 0) && (LLS->A[pos - 1].cddata > valor.cddata); pos--) //SE existir uma posição sobreescreva ela colocando todos os itens a direita 1 casa para esqueda
+    
     {
         LLS->A[pos] = LLS->A[pos - 1];
     }
@@ -149,38 +150,37 @@ int buscaElemDAt(int ch, LISTA *LLS)
         }
     }
 
-    
     fflush(stdin);
 
     return 1;
 }
 
-int buscaLinear(LISTA *LLS){
+int buscaLinear(LISTA *LLS)
+{
 
-int i,j=0;
+    int i, j = 0;
 
-for(i=0; i<LLS->nmrElem; i++){
+    for (i = 0; i < LLS->nmrElem; i++)
+    {
 
-if (LLS->A[i].sts == "Entregue"){
-excluirLinear(i,LLS);
-j++;
-}
-
-}
-if(j==0){
-    printf("\nNENHUM ITEM FOI ENCONTRADO!");
-    return 0;
-}
-return 1;
-
-
-
+        if (LLS->A[i].sts == "Entregue")
+        {
+            excluirLinear(i, LLS);
+            j++;
+        }
+    }
+    if (j == 0)
+    {
+        printf("\nNENHUM ITEM FOI ENCONTRADO!");
+        return 0;
+    }
+    return 1;
 }
 
 int excluirLinear(int ch, LISTA *LLS)
 {
     int j;
-    
+
     if (ch == -1)
         return 0;
     for (j = ch; j < LLS->nmrElem - 1; j++)
