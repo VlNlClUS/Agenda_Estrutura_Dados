@@ -18,7 +18,7 @@ int inserirElemPosicaoLLS_Ord(LISTA *LLS, REGISTRO valor)
     {
         LLS->A[pos] = LLS->A[pos - 1];
     }
-    valor.sts="Pendente";
+    valor.sts = "Pendente";
     LLS->A[pos] = valor;
     LLS->nmrElem++;
     return 1;
@@ -30,11 +30,11 @@ void mostraLLS(LISTA *LLS)
     printf("TAREFAS:\n");
     for (i = 0; i < LLS->nmrElem; i++)
     {
-        printf("\nTarefa    %d    Status: %s\n\n", i + 1, LLS->A[i].sts);
+        printf("\nTarefa    %d    Status: %s\n\n", LLS->nmrElem, LLS->A[i].sts);
         printf("Titulo:     %s", LLS->A[i].nometrab);
         printf("Disciplina: %s", LLS->A[i].dpn);
         printf("Descricao:  %s", LLS->A[i].desc);
-        printf("Data:       %i/%i/%i ", LLS->A[i].dd,LLS->A[i].mm,LLS->A[i].ano);
+        printf("Data:       %i/%i/%i ", LLS->A[i].dd, LLS->A[i].mm, LLS->A[i].ano);
         printf("\n");
     }
     fflush(stdin); //fflush(stdin); //se for windows
@@ -66,16 +66,41 @@ int buscaBinariaLLS(LISTA *LLS, int ch)
 
 int excluirElemLLS(int ch, LISTA *LLS)
 {
-   int pos, j,TESTE=0;
-    do{ 
+    int pos, j, TESTE = 0, i;
+
     pos = buscaBinariaLLS(LLS, ch);
-   printf("TENTATIVAS = %d", TESTE);
-    if (pos == -1)
+
+    if (pos == -1) //QUER DIZER QUE ELE NÃO ACHOU O ELEMENTO
         return 0;
-    for (j = pos; j < LLS->nmrElem - 1; j++)
-        LLS->A[j] = LLS->A[j + 1];
-    LLS->nmrElem--;
-    TESTE++;
-   }while(pos!=-1);
-   return 1;
+
+    while (LLS->A[pos - 1].codigo == ch) //COMO A busca binaria encontra apenas a posição de um elemento esse "while" garante que todos serão excluidos
+
+    {
+
+        if (LLS->A[pos].codigo == ch) //IF de redundancia
+        {
+            pos--;
+        }
+    }
+
+    while (LLS->A[pos].codigo == ch)
+    {
+
+        if (LLS->A[0].codigo == ch && LLS->nmrElem <= 2)
+        {
+            LLS->nmrElem = 0;
+            return 1;
+        }
+        else if (LLS->A[1].codigo == ch && LLS->nmrElem <= 2 && LLS->A[1].codigo != LLS->A[0].codigo)
+        {
+            LLS->nmrElem--;
+            return 1;
+        }
+
+
+        for (j = pos; j < LLS->nmrElem - 1; j++) //MOVE TODOS ELEMENTOS 1 POSIÇÃO PRA TRAS
+            LLS->A[j] = LLS->A[j + 1];
+        LLS->nmrElem--;
+    }
+    return 1;
 }

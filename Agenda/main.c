@@ -16,7 +16,7 @@ int main()
 
     do
     {
-        system("@cls||clear");
+        //system("@cls||clear");
 
         printf("\nEntre com a opcao:\n");
         printf(" 'I' - inserir um trabalho na agenda\n");
@@ -46,7 +46,7 @@ int main()
         {
 
         case 'I':
-            system("@cls||clear");
+            //system("@cls||clear");
 
             printf(" Preencha os campos para que a tarefa seja computada:\n\n");
             printf("Digite o Nome do Trabalho: ");
@@ -61,7 +61,7 @@ int main()
 
             do
             {
-                system("@cls||clear");
+                //system("@cls||clear");
                 printf("Digite a Data de Entraga para do trabalho:\n");
                 printf("Dia: ");
                 scanf("%d", &valor.dd);
@@ -69,7 +69,7 @@ int main()
                 {
                     printf("FORMATO INVALIDO!!\nFavor insira um numero de 1 a 31\n");
                     getchar();
-                    getchar();
+                  
                 }
             } while (valor.dd <= 0 || valor.dd > 31);
             do
@@ -80,8 +80,8 @@ int main()
                 {
                     printf("Favor insira um numero de 1 a 12\n");
                     getchar();
-                    getchar();
-                    system("@cls||clear");
+                  
+                    //system("@cls||clear");
                 }
             } while (valor.mm <= 0 || valor.mm > 12);
 
@@ -94,7 +94,7 @@ int main()
                     printf("Favor insira um numero entre 2019 e 2099\n");
                     getchar();
                     getchar();
-                    system("@cls||clear");
+                    //system("@cls||clear");
                 }
             } while (valor.ano < 2019 || valor.ano > 2099);
 
@@ -118,7 +118,7 @@ int main()
             break;
 
         case 'R':
-            system("@cls||clear");
+            //system("@cls||clear");
 
             printf("\nEntre com a opcao:\n");
             printf(" 'A' - Remover da agenda todos os trabalhos com status 'Entregue \n");
@@ -136,15 +136,15 @@ int main()
                     {
 
                     case 'A':
-                        system("@cls||clear");
+                        //system("@cls||clear");
                         printf("TESTE A");
                         break;
 
                     case 'D':
-                        system("@cls||clear");
+                        //system("@cls||clear");
                         do
                     {
-                        system("@cls||clear");
+                        //system("@cls||clear");
                         printf("Digite a Data Corespondente as tarefas que deseja excluir:\n");
                         printf("Dia: ");
                         scanf("%d", &tmpD);
@@ -164,7 +164,7 @@ int main()
                             printf("Favor insira um numero de 1 a 12\n");
                             getchar();
                             getchar();
-                            system("@cls||clear");
+                            //system("@cls||clear");
                         }
                     } while (tmpM <= 0 || tmpM > 12);
 
@@ -177,18 +177,18 @@ int main()
                             printf("Favor insira um numero entre 2019 e 2099\n");
                             getchar();
                             getchar();
-                            system("@cls||clear");
+                            //system("@cls||clear");
                         }
                     } while (tmpA < 2019 || tmpA > 2099);
 
                     TEMP = (tmpA * 10000) + (tmpM * 100) + tmpD;
-                    fflush(stdin);
-                    getchar();
+                    
+                    mostraLLS(&LLS);
 excluirElemLLS(TEMP,&LLS);
                         break;
 
                     default:
-                        system("@cls||clear");
+                        //system("@cls||clear");
                         printf("ATENCAO - Opcao invalida! \n");
                         printf("Digite <enter> para voltar");
                         getchar();
@@ -198,23 +198,23 @@ excluirElemLLS(TEMP,&LLS);
 
             break;
         case 'C':
-            system("@cls||clear");
+            //system("@cls||clear");
             mostraLLS(&LLS);
 
             break;
         case 'E':
-            system("@cls||clear");
+            //system("@cls||clear");
             printf("TESTE E");
 
             break;
 
         case 'F':
-            system("@cls||clear");
+            //system("@cls||clear");
             printf("\nSolicitou a opcao - sair!\n");
             exit(0);
             break;
         default:
-            system("@cls||clear");
+            //system("@cls||clear");
             printf("ATENCAO - Opcao invalida! \n");
             printf("Digite <enter> para voltar");
             getchar();
